@@ -1,15 +1,21 @@
 /**
- * @description      :
+    * @description      : 
+    * @author           : DHANUSH
+    * @group            : 
+    * @created          : 09/11/2025 - 12:51:00
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 09/11/2025
+    * - Author          : DHANUSH
+    * - Modification    : 
+**/
+/**
+ * @description      : Dictionary App Component
  * @author           : DHANUSH
- * @group            :
- * @created          : 09/11/2025 - 12:19:55
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 09/11/2025
- * - Author          : DHANUSH
- * - Modification    :
- **/
+ * @created          : 09/11/2025
+ */
+
 import "./App.css";
 import React, { useState } from "react";
 
@@ -22,13 +28,15 @@ function App() {
     { word: "Component", meaning: "A reusable building block in React." },
     { word: "State", meaning: "An object that stores data for a component." },
   ];
+
   const [dictionary] = useState(dictionaryData);
   const [searchTerm, setSearchTerm] = useState("");
   const [result, setResult] = useState("");
 
   const handleSearch = () => {
+    const term = searchTerm.trim().toLowerCase();
     const foundWord = dictionary.find(
-      (entry) => entry.word.toLowerCase() === searchTerm.trim().toLowerCase()
+      (entry) => entry.word.toLowerCase() === term
     );
 
     if (foundWord) {
@@ -43,7 +51,8 @@ function App() {
       <div
         style={{ textAlign: "center", marginTop: "50px", fontFamily: "Arial" }}
       >
-        <h1>XDictionary</h1>
+        <h1>Dictionary App</h1>
+
         <input
           type="text"
           placeholder="Enter a word"
@@ -73,15 +82,8 @@ function App() {
         </button>
 
         <div style={{ marginTop: "30px" }}>
-          {result &&
-            (result === "Word not found in the dictionary." ? (
-              <p>{result}</p>
-            ) : (
-              <>
-                <h3>Definition:</h3>
-                <p>{result}</p>
-              </>
-            ))}
+          <h3>Definition:</h3>
+          <p>{result}</p>
         </div>
       </div>
     </div>
